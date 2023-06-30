@@ -8,7 +8,7 @@ template <typename Iterator>
 class WaveletTree {
 private :
     int lo, hi;
-    WaveletTree *l, *r;
+    WaveletTree *l = nullptr, *r = nullptr;
     vector<int> pre;
 
 public:
@@ -30,8 +30,8 @@ public:
     }
 
     ~WaveletTree() {
-        delete l;
-        delete r;
+        if (l != nullptr) delete l;
+        if (r != nullptr) delete r;
     }
 
     int lower(int lt, int rt, int x) {
